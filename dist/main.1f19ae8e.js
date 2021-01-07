@@ -103930,7 +103930,28 @@ var _echarts = _interopRequireDefault(require("echarts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_echarts.default);
+console.log(_echarts.default); // 基于准备好的dom，初始化echarts实例
+
+var myChart = _echarts.default.init(document.getElementById('main')); // 指定图表的配置项和数据
+
+
+var option = {
+  tooltip: {},
+  legend: {
+    data: ['bug数']
+  },
+  xAxis: {
+    data: ['一月', '二月', '三月', '四月', '五月']
+  },
+  yAxis: {},
+  series: [{
+    name: 'bug数',
+    type: 'bar',
+    data: [10, 20, 36, 3, 5]
+  }]
+}; // 使用刚指定的配置项和数据显示图表。
+
+myChart.setOption(option);
 },{"echarts":"../node_modules/echarts/index.js"}],"C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
