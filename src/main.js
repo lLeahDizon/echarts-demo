@@ -6,19 +6,21 @@ console.log(echarts)
 var myChart = echarts.init(document.getElementById('main'))
 
 // 指定图表的配置项和数据
-var option = {
-  tooltip: {},
+const option = {
   legend: {
     data: ['bug数']
   },
   xAxis: {
-    data: ['一月', '二月', '三月', '四月', '五月']
+    type: 'category',
+    data: ['1', '2', '3', '4', '5', '6']
   },
-  yAxis: {},
+  yAxis: {
+    type: 'value'
+  },
   series: [{
     name: 'bug数',
-    type: 'bar',
-    data: [10, 20, 36, 3, 5]
+    data: [820, 932, 901, 934, 1290, 1330, 1320],
+    type: 'line'
   }]
 }
 

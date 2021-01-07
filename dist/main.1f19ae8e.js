@@ -103936,18 +103936,20 @@ var myChart = _echarts.default.init(document.getElementById('main')); // 指定�
 
 
 var option = {
-  tooltip: {},
   legend: {
     data: ['bug数']
   },
   xAxis: {
-    data: ['一月', '二月', '三月', '四月', '五月']
+    type: 'category',
+    data: ['1', '2', '3', '4', '5', '6']
   },
-  yAxis: {},
+  yAxis: {
+    type: 'value'
+  },
   series: [{
     name: 'bug数',
-    type: 'bar',
-    data: [10, 20, 36, 3, 5]
+    data: [820, 932, 901, 934, 1290, 1330, 1320],
+    type: 'line'
   }]
 }; // 使用刚指定的配置项和数据显示图表。
 
