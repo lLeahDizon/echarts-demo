@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "echarts": "4.7.0"
+  },
+  "devDependencies": {
+    "@types/echarts": "^4.9.3"
+  }
+}
