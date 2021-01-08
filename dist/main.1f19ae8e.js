@@ -103930,30 +103930,43 @@ var _echarts = _interopRequireDefault(require("echarts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_echarts.default); // 基于准备好的dom，初始化echarts实例
+var main = document.getElementById('main'); // 基于准备好的dom，初始化echarts实例
 
-var myChart = _echarts.default.init(document.getElementById('main')); // 指定图表的配置项和数据
+var myChart = _echarts.default.init(main, 'default'); // 指定图表的配置项和数据
+// 使用刚指定的配置项和数据显示图表。
 
 
-var option = {
+myChart.setOption({
+  title: {
+    show: true,
+    text: '销量',
+    right: 0
+  },
   legend: {
     data: ['bug数']
   },
+  tooltip: {
+    show: true
+  },
   xAxis: {
     type: 'category',
-    data: ['1', '2', '3', '4', '5', '6']
+    data: ['2020-01-01', '2020-01-02', '2020-01-03', '2020-01-04', '2020-01-05', '2020-01-06']
   },
   yAxis: {
     type: 'value'
   },
   series: [{
+    lineStyle: {
+      color: 'blue'
+    },
+    itemStyle: {
+      borderWidth: 10
+    },
     name: 'bug数',
-    data: [820, 932, 901, 934, 1290, 1330, 1320],
+    data: [1, 2, 3, 4, 5, 6, 7],
     type: 'line'
   }]
-}; // 使用刚指定的配置项和数据显示图表。
-
-myChart.setOption(option);
+});
 },{"echarts":"../node_modules/echarts/index.js"}],"C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -103982,7 +103995,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5728" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5771" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
