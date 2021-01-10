@@ -21,8 +21,8 @@ function createValue() {
 
 // 指定图表的配置项和数据
 
-const xData = [createKey(), createKey(), createKey(), createKey(), createKey(), createKey()]
-const values = [createValue(), createValue(), createValue(), createValue(), createValue(), createValue()]
+let xData = [createKey(), createKey(), createKey(), createKey(), createKey(), createKey()]
+let values = [createValue(), createValue(), createValue(), createValue(), createValue(), createValue()]
 
 // 使用刚指定的配置项和数据显示图表。
 myChart.setOption({
@@ -57,15 +57,26 @@ myChart.setOption({
   }]
 })
 
+let isLoading = false
+
 loadMoreButton.addEventListener('click', () => {
-  const key = '2020-01-07'
-  const value = 8
-  myChart.setOption({
-    xAxis: {
-      data: [...xData, createKey()]
-    },
-    series: [{
-      data: [...values, createValue()]
-    }]
-  })
+  if (isLoading === true) { return }
+  myChart.showLoading()
+  isLoading = true
+  setTimeout(() => {
+    const key = createKey()
+    const value = createValue()
+    xData = [...xData, key]
+    values = [...values, value]
+    myChart.setOption({
+      xAxis: {
+        data: xData
+      },
+      series: [{
+        data: values
+      }]
+    })
+    myChart.hideLoading()
+    isLoading = false
+  }, 3000)
 })
