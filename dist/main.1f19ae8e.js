@@ -103930,11 +103930,27 @@ var _echarts = _interopRequireDefault(require("echarts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var main = document.getElementById('main'); // 基于准备好的dom，初始化echarts实例
+var main = document.getElementById('main');
+var loadMoreButton = document.getElementById('loadMore'); // 基于准备好的dom，初始化echarts实例
 
-var myChart = _echarts.default.init(main, 'default'); // 指定图表的配置项和数据
-// 使用刚指定的配置项和数据显示图表。
+var myChart = _echarts.default.init(main, 'default');
 
+var n = 0;
+var m = 0;
+
+function createKey() {
+  n += 1;
+  return "2020-01-".concat(n);
+}
+
+function createValue() {
+  m += 1;
+  return m;
+} // 指定图表的配置项和数据
+
+
+var xData = [createKey(), createKey(), createKey(), createKey(), createKey(), createKey()];
+var values = [createValue(), createValue(), createValue(), createValue(), createValue(), createValue()]; // 使用刚指定的配置项和数据显示图表。
 
 myChart.setOption({
   title: {
@@ -103950,7 +103966,7 @@ myChart.setOption({
   },
   xAxis: {
     type: 'category',
-    data: ['2020-01-01', '2020-01-02', '2020-01-03', '2020-01-04', '2020-01-05', '2020-01-06']
+    data: xData
   },
   yAxis: {
     type: 'value'
@@ -103963,9 +103979,21 @@ myChart.setOption({
       borderWidth: 10
     },
     name: 'bug数',
-    data: [1, 2, 3, 4, 5, 6, 7],
+    data: values,
     type: 'line'
   }]
+});
+loadMoreButton.addEventListener('click', function () {
+  var key = '2020-01-07';
+  var value = 8;
+  myChart.setOption({
+    xAxis: {
+      data: [].concat(xData, [createKey()])
+    },
+    series: [{
+      data: [].concat(values, [createValue()])
+    }]
+  });
 });
 },{"echarts":"../node_modules/echarts/index.js"}],"C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -103995,7 +104023,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5771" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3589" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
