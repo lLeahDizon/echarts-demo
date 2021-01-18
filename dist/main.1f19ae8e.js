@@ -104020,6 +104020,11 @@ loadMoreButton.addEventListener('click', function () {
     isLoading = false;
   }, 3000);
 });
+myChart.on('click', function (e) {
+  console.log(e.dataIndex);
+  console.log(e.data);
+  console.log(e.name); // window.open(`http://www.baidu.com/?time=${e.name}`)
+});
 },{"echarts":"../node_modules/echarts/index.js"}],"C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -104048,7 +104053,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3589" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12254" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
