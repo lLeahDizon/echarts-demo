@@ -103943,7 +103943,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var main = document.getElementById('main');
-var loadMoreButton = document.getElementById('loadMore'); // 基于准备好的dom，初始化echarts实例
+var loadMoreButton = document.getElementById('loadMore');
+var width = document.documentElement.clientWidth;
+main.style.width = "".concat(width, "px");
+main.style.height = "".concat(width * 1.2, "px"); // 基于准备好的dom，初始化echarts实例
 
 var myChart = _echarts.default.init(main, 'default');
 
@@ -103965,34 +103968,45 @@ var xData = [createKey(), createKey(), createKey(), createKey(), createKey(), cr
 var values = [createValue(), createValue(), createValue(), createValue(), createValue(), createValue()]; // 使用刚指定的配置项和数据显示图表。
 
 myChart.setOption({
-  title: {
-    show: true,
-    text: '销量',
-    right: 0
-  },
-  legend: {
-    data: ['bug数']
-  },
-  tooltip: {
-    show: true
-  },
-  xAxis: {
-    type: 'category',
-    data: xData
-  },
-  yAxis: {
-    type: 'value'
-  },
-  series: [{
-    lineStyle: {
-      color: 'blue'
+  baseOption: {
+    title: {
+      show: true,
+      text: '销量',
+      right: 20
     },
-    itemStyle: {
-      borderWidth: 10
+    legend: {
+      data: ['bug数']
     },
-    name: 'bug数',
-    data: values,
-    type: 'line'
+    tooltip: {
+      show: true
+    },
+    xAxis: {
+      type: 'category',
+      data: xData
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      lineStyle: {
+        color: 'blue'
+      },
+      name: 'bug数',
+      data: values,
+      type: 'line'
+    }]
+  },
+  media: [{
+    query: {
+      maxWidth: 500
+    },
+    option: {
+      series: [{
+        itemStyle: {
+          borderWidth: 30
+        }
+      }]
+    }
   }]
 });
 var isLoading = false;
@@ -104018,14 +104032,14 @@ loadMoreButton.addEventListener('click', function () {
     });
     myChart.hideLoading();
     isLoading = false;
-  }, 3000);
+  }, 500);
 });
 myChart.on('click', function (e) {
   console.log(e.dataIndex);
   console.log(e.data);
   console.log(e.name); // window.open(`http://www.baidu.com/?time=${e.name}`)
 });
-},{"echarts":"../node_modules/echarts/index.js"}],"C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"echarts":"../node_modules/echarts/index.js"}],"C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -104053,7 +104067,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12254" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8900" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -104229,5 +104243,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
+},{}]},{},["C:/Users/51633/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","main.js"], null)
 //# sourceMappingURL=/main.1f19ae8e.js.map
